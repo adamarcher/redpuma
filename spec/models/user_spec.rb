@@ -7,7 +7,7 @@
 #  email      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#
+
 
 require 'spec_helper'
 
@@ -51,7 +51,7 @@ describe User do
     end
   end
 
-  # Verity that invalid email addresses are rejected
+  # Verify that invalid email addresses are rejected
   it "should reject invalid email addresses" do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     addresses .each do |address|
@@ -59,6 +59,23 @@ describe User do
       invalid_email_user.should_not be_valid
     end
   end
+
+  # Verify that duplicate email addresses get rejected
+  it "should reject duplicate email addresses" do
+    # Put a user with given email address into the database.
+    User.create!(@attr)
+    user_with_duplicate_email = User.new(@attr)
+    user_with_duplicate_email.should_not be_valid
+  end
+
+  # Verify that duplicate email addresses (different case) get
+  # rejected
+  it "should reject identical email addresses with different case" do
+    upcased_email = @attr[:email].upcase
+    User.create!(@attr.merge(:email => upcased_email))
+    user_with_duplicate_email = User.new(@attr)
+    user_with_duplicate_email.should_not be_valid
+  end  
 
 end
 
