@@ -31,7 +31,7 @@ section h1 {
 
 a {
   color: #09c;
-  text-decoration: non;
+  text-decoration: none;
 }
 
 a:hover {
@@ -68,7 +68,7 @@ nav ul li {
 }
 
 nav ul li a {
-  padding: 0 5px
+  padding: 0 5px;
   font-weight: bold;
 }
 
@@ -88,7 +88,7 @@ a.signup_button {
   margin-right: auto;
   display: block;
   text-align: center;
-  width: 190po;
+  width: 190px;
   color: #fff;
   background: #006400;
   font-size: 150%;
@@ -141,3 +141,59 @@ td.sidebar {
   border: 1px solid #999;
   margin-bottom: -15px;
 }
+
+/* For user Sign up page */
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* Styling for error messages */
+
+.field_with_errors {
+  margin-top: 1px;
+  padding: 1px;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  font-size 12px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+  
+/* 'error_explanation h2' is not currently used */
+
+#error_explanation h2 {
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff:
+}
+  
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+/* I don't like the way this looks, so commenting out - AA*/
+
+/*
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+*/
