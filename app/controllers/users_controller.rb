@@ -18,8 +18,15 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       # Not a successful user DB save!
+
+      # If we wanted to clear the password and password
+      # confirmation fields upon unsuccessful signup, we'd
+      # uncomment these lines
+      # @user.password = ""
+      # @user.password_confirmation = ""
+
       @title = "Sign up"
-      render 'new'
+      render :new
     end
 
   end # def create
