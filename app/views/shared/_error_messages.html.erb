@@ -1,9 +1,10 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
-    <p><%= pluralize(@user.errors.count, "problem") %>
-        prevented you from signing up:<p>
+    <p><%= pluralize(object.errors.count, "problem") %>
+        prevented <%= object.class.to_s.underscore.humanize.downcase %>
+	from being saved:<p>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>

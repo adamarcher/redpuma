@@ -197,3 +197,13 @@ div.field, div.actions {
   list-style: square;
 }
 */
+
+/* For User Index Page */
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list=style: none;
+}

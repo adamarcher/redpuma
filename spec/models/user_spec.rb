@@ -111,7 +111,7 @@ describe User do
       User.new(hash).should_not be_valid
     end
 
-  end
+  end  # describe "password validations" do
 
 
   # ---------------------------------------
@@ -161,9 +161,30 @@ describe User do
         matching_user.should == @user
       end
 
+    end  # describe "authenticate method" do
+
+  end  # describe "password encryption" do
+
+  describe "admin attribute" do
+
+    before(:each) do
+      @user = User.create!(@attr)
     end
 
-  end
+    it "should respond to admin" do
+      @user.should respond_to(:admin)
+    end
 
-end
+    it "should not be an admin by default" do
+      @user.should_not be_admin
+    end
+
+    it "should be convertible to an admin" do
+      @user.toggle!(:admin)
+      @user.should be_admin
+    end
+
+  end  # describe "admin attribute" do
+
+end  # describe User do
 
