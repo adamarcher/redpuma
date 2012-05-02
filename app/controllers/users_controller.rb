@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+  # It's a bit of a weird user experience with this, so commenting out
+  # clicking on the "Sign up Now!" button doesn't do anythign if you're
+  # Signed in
+  # before_filter :redirect_to_rooturl, :only => [:new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
 
@@ -58,8 +62,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    if User.find(params[:id]).admin?
+      flash[:notice] = "You're not allowed to delete an admin"
+    else
+      User.find(params[:id]).destroy
+      flash[:success] = "User deleted."
+    end
     redirect_to users_path
   end
 
@@ -67,6 +75,10 @@ class UsersController < ApplicationController
 
     def authenticate
       deny_access unless signed_in?
+    end
+
+    def redirect_to_rooturl
+      redirect_to(root_path) if signed_in? 
     end
 
     def correct_user

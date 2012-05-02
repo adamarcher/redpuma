@@ -44,11 +44,12 @@ describe UsersController do
         end
       end
 
-      it "should have an element for each user" do
-	get :index
-	@users[0..2].each do |user|
-	  response.should have_selector("a", :content => user.name)
-	end
+      it "should not display a 'delete' link for users" do
+        get :index
+        @users.each do |user|
+          response.should_not have_selector("a", :title => "Delete #{@user.name}",
+						 :content => "delete")
+        end
       end
 
       it "should paginate users" do
@@ -226,7 +227,7 @@ describe UsersController do
       get :edit, :id => @user
       gravatar_url = "http://gravatar.com/emails"
       response.should have_selector("a", :href => gravatar_url,
-					 :content => "change")
+					 :target => "_blank", :content => "change")
     end
 
   end  # describe "GET 'edit'" do
@@ -333,6 +334,7 @@ describe UsersController do
       @user = Factory(:user)
     end
 
+
     describe "as a non-signed-in user" do
       it "should deny access" do
 	delete :destroy, :id => @user
@@ -351,8 +353,19 @@ describe UsersController do
     describe "as an admin user" do
 
       before(:each) do
-        admin = Factory(:user, :email => "admin@redpuma.com", :admin => true)
-	test_sign_in(admin)
+        @admin = Factory(:user, :email => "admin@redpuma.com", :admin => true)
+	test_sign_in(@admin)
+      end
+
+      # We could test for (and implement) this in the future
+      # it "should not display a 'delete' link for admins" do
+        # get :index
+        # response.should_not have_selector("a", :title => "Delete #{@admin.name}", :content => "delete")
+      # end
+
+      it "should display 'delete' link for normal users" do
+        get :index
+        response.should have_selector("a", :title => "Delete #{@user.name}", :content => "delete")
       end
 
       it "should destroy the user" do
@@ -360,10 +373,22 @@ describe UsersController do
 	  delete :destroy, :id => @user
         end.should change(User, :count).by(-1)
       end
+
+      it "should not be able to destroy an admin user" do
+        lambda do
+	  delete :destroy, :id => @admin
+	  flash[:notice].should =~ /You're not allowed to delete an admin/i
+        end.should_not change(User, :count).by(-1)
+      end
     
       it "should redirect to the users page" do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
+      end
+
+      it "should display the correct flash message" do
+        delete :destroy, :id => @user
+	flash[:success].should =~ /user deleted/i
       end
 
     end  # describe "as an admin user" do
