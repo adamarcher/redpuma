@@ -1,4 +1,6 @@
-require 'faker'
+# Commenting out this line to fix this issue:
+# http://stackoverflow.com/questions/5013826/heroku-rake-dbmigrate-no-such-file-to-load-faker
+# require 'faker'
 
 namespace :db do
   desc "Fill database with sample data"
