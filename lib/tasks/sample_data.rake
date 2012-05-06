@@ -18,7 +18,13 @@ namespace :db do
 		   :email => email,
 		   :password => password,
 		   :password_confirmation => password)
-    end
+    end  # 99.times do |n|
+
+    User.all(:limit => 6).each do |user|
+      50.times do
+        user.microposts.create!(:description => Faker::Lorem.sentence(5), :score => 5)
+      end
+    end  # User.all(:limit => 6).each do |user|
 
   end  # task :populate => :environment do
 

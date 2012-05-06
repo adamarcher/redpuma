@@ -1,0 +1,44 @@
+require 'spec_helper'
+
+describe "Microposts" do
+
+  before(:each) do
+    user = Factory(:user)
+    visit signin_path
+    fill_in :email,	:with => user.email
+    fill_in :password,  :with => user.password
+    click_button
+  end
+
+  describe "creation" do
+
+    describe "failure" do
+      it "should not make a new micropost" do
+	lambda do
+	  visit root_path
+	  fill_in :micropost_description, :with => ""
+	  click_button
+	  response.should render_template('pages/home')
+	  response.should have_selector("div#error_explanation")
+	end.should_not change(Micropost, :count)
+      end
+    end
+
+    describe "success" do
+      it "should create a new micropost" do
+ 	description = "Lorem ipsum dolor sit amet"
+	score = 8
+	lambda do
+	  visit root_path
+	  fill_in :micropost_description, :with => description
+	  fill_in :micropost_score, :with => score
+	  click_button
+	  response.should have_selector("span", :class => "description", :content => description)
+	  response.should have_selector("span", :class => "score", :content => score.to_s)
+	end.should change(Micropost, :count).by(1)
+      end
+    end
+
+  end  # describe "creation" do
+
+end  # describe "Microposts" do
