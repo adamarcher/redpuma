@@ -8,7 +8,6 @@
       <%= link_to feed_item.user.name, feed_item.user %>
     </span>
     <span class="description"><%= feed_item.description %></span>
-    <span class="score">(<%= feed_item.score %> points)</span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>

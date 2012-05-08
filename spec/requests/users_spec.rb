@@ -31,9 +31,9 @@ describe "Users" do
         lambda do
           visit signup_path
           fill_in "Full Name",		:with => "Joe Example"
-          fill_in "Email",		:with => "user@example.com"
-          fill_in "Password",		:with => "examplepassword"
-          fill_in "Confirm Password",	:with => "examplepassword"
+          fill_in "Email",		:with => "testuser@example.com"
+          fill_in "Password",		:with => "testuser"
+          fill_in "Confirm Password",	:with => "testuser"
 	  click_button
 	  response.should have_selector("div.flash.success",
 					:content => "Welcome")

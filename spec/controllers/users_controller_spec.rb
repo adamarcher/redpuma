@@ -18,11 +18,12 @@ describe UsersController do
 
       before(:each) do
         @user = test_sign_in(Factory(:user))
-        second = Factory(:user, :email => "another@example.com")
-        third  = Factory(:user, :email => "another@example.net")
+        # second = Factory(:user, :email => "testuser-1@redpuma.com")
+        # third  = Factory(:user, :email => "testuser-2@redpuma.com")
 
-	@users = [@user, second, third]
-	30.times do
+	# @users = [@user, second, third]
+	@users = [@user]
+	32.times do
 	  @users << Factory(:user, :email => Factory.next(:email))
 	end
       end
@@ -191,9 +192,9 @@ describe UsersController do
     describe "success" do
 
       before(:each) do
-        @attr = { :name => "New User", :email => "user@example.com",
-		  :password => "hellodolly",
-		   :password_confirmation => "hellodolly" }
+        @attr = { :name => "Test User", :email => "testuser-99@redpuma.com",
+		  :password => "testuser",
+		  :password_confirmation => "testuser" }
       end
 
       it "should create a user" do
@@ -277,8 +278,8 @@ describe UsersController do
     describe "success" do
 
       before(:each) do
-        @attr = { :name => "New Name", :email => "user@example.org",
-		  :password => "blahblah", :password_confirmation => "blahblah" }
+        @attr = { :name => "Test User", :email => "testuser-99@redpuma.com",
+		  :password => "testuser", :password_confirmation => "testuser" }
       end
 
       it "should change the user's attributes" do
@@ -325,7 +326,7 @@ describe UsersController do
     describe "for signed-in users" do
 
       before(:each) do
-        wrong_user = Factory(:user, :email => "user@example.net")
+        wrong_user = Factory(:user, :email => "testuser-99@redpuma.com")
         test_sign_in(wrong_user)
       end
 

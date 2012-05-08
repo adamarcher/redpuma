@@ -13,17 +13,17 @@
       <%= render 'layouts/header' %>
       <section class="round">
 
-	<!-- Arrange to insert a <div> tag for each element
+	<%# Arrange to insert a <div> tag for each element
 	in the flash, with a CSS class indication the type
-	of message -->
+	of message %>
         <% flash.each do |key, value| %>
           <div class="flash <%=key %>"><%= value %></div>
 	<% end %>
 
-	<!-- Alternate version of the above, commented out
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %> -->
+	<%# Alternate version of the above, commented out %>
+        <%# flash.each do |key, value| %>
+          <%#= content_tag(:div, value, :class => "flash #{key}") %>
+	<%# end %>
 
         <%= yield %>
       </section>

@@ -26,15 +26,13 @@ describe "Microposts" do
 
     describe "success" do
       it "should create a new micropost" do
- 	description = "Lorem ipsum dolor sit amet"
-	score = 8
+ 	description = "I didn\'t buy breakfast today (5 pts)"
 	lambda do
 	  visit root_path
 	  fill_in :micropost_description, :with => description
-	  fill_in :micropost_score, :with => score
+	  # fill_in :micropost_score, :with => score
 	  click_button
 	  response.should have_selector("span", :class => "description", :content => description)
-	  response.should have_selector("span", :class => "score", :content => score.to_s)
 	end.should change(Micropost, :count).by(1)
       end
     end

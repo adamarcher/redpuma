@@ -7,7 +7,7 @@ class Micropost < ActiveRecord::Base
 
   validates :description, :presence => true, :length => { :maximum => 140 }
   # TODO Add a maximum possible value for score
-  validates :score, 	  :presence => true
+  # validates :score, 	  :presence => true
   validates :user_id,     :presence => true
 
   default_scope :order => 'microposts.created_at DESC'

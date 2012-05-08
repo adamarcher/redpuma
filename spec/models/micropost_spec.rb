@@ -63,13 +63,6 @@ describe Micropost do
       @user.microposts.build(:description => "a" * 141, :score => 3).should_not be_valid
     end
 
-    it "should require non-blank score" do
-      @user.microposts.build(:description => "lalalal", :score => nil).should_not be_valid
-    end
-
-    #it "should require score to be 21 or less" do
-    #  @user.microposts.build(:score => 22).should_not be_valid
-    #end
-
   end  # describe "validations" do
-end
+
+end  # describe Micropost do

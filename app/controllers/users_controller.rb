@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
-  # It's a bit of a weird user experience with this, so commenting out
-  # clicking on the "Sign up Now!" button doesn't do anythign if you're
-  # Signed in
-  # before_filter :redirect_to_rooturl, :only => [:new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
 

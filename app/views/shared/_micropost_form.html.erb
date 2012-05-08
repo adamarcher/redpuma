@@ -1,8 +1,78 @@
 <%= form_for @micropost do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.text_area :description %>
-    <%= f.text_area :score %>
+    <%#= f.text_area :description %>
+    <%#= f.text_area :score %>
+
+    <%# TODO: This is a hack, must fix %>
+    <% @possible_actions =
+			   [
+                            [
+			      'I didn\'t buy a beverage (3 pts)',
+			      'I didn\'t buy a beverage (3 pts)'
+			    ],
+                            [
+			      'I didn\'t buy breakfast (5 pts)',
+		       	      'I didn\'t buy breakfast (5 pts)'
+			    ],
+                            [
+			      'I didn\'t buy lunch (10 pts)',
+			      'I didn\'t buy lunch (10 pts)'
+			    ],
+                            [
+			      'I didn\'t buy dinner (20 pts)',
+			      'I didn\'t buy dinner (20 pts)'
+			    ],
+                            [
+			      'I posted something on Craigslist or eBay (20 pts)',
+			      'I posted something on Craigslist or eBay (20 pts)'
+			    ],
+                            [
+			      'I donated an item (20 pts)',
+			      'I donated an item (20 pts)'
+			    ],
+                            [
+			      'I called a utility (phone, cable, etc.) and asked for money back or a lower rate (20 pts)',
+			      'I called a utility (phone, cable, etc.) and asked for money back or a lower rate (20 pts)'
+			    ],
+                            [
+			      'I deposited money into a Savings or Investment Account (30 pts)',
+			      'I deposited money into a Savings or Investment Account (30 pts)'
+			    ],
+                            [
+			      'I did not spend any money (other than on groceries or transportation) (20 pts)',
+			      'I did not spend any money (other than on groceries or transportation) (20 pts)'
+			    ],
+                            [
+			      'I used miles or points for travel instead of cash (25 pts)',
+			      'I used miles or points for travel instead of cash (25 pts)'
+			    ],
+                            [
+			      'I carpooled instead of driving (5 pts)',
+			      'I carpooled instead of driving (5 pts)'
+			    ],
+                            [
+			      'I walked instead of driving (8 pts)',
+			      'I walked instead of driving (8 pts)'
+			    ],
+                            [
+			      'I took public transporation instead of driving (6 pts)',
+			      'I took public transporation instead of driving (6 pts)'
+			    ],
+                            [
+			      'I got free stuff today that I\'m going to use (10 pts)',
+			      'I got free stuff today that I\'m going to use (10 pts)'
+			    ],
+                            [
+			      'I posted on Facebook or Twitter about my financial goals (20 pts)',
+			      'I posted on Facebook or Twitter about my financial goals (20 pts)'
+			    ],
+                           ]
+    %>
+    <%= f.select :description, @possible_actions %>
+    <%# No longer need this line. Score creation is
+        now completed in the controller (microposts_controller.rb) %>
+    <%#= f.select :score, [['5', 5],['6',6],['7',7]] %>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>

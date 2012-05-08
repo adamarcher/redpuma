@@ -5,15 +5,26 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
-  has_many :microposts, :dependent => :destroy
+  has_many :microposts, 	   :dependent => :destroy
+  has_many :relationships, 	   :foreign_key => "follower_id",
+			   	   :dependent => :destroy
+  has_many :following, 		   :through => :relationships,
+				   :source => :followed
+  has_many :reverse_relationships, :foreign_key => "followed_id",
+			           :class_name => "Relationship",
+				   :dependent => :destroy
+  has_many :followers, 		   :through => :reverse_relationships,
+				   :source => :follower
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  approved_users = /lillianbarcher@gmail.com|jesselevey@gmail.com|townsend.joseph@gmail.com|devuser-?\d*@redpuma.com|testuser-?\d*@redpuma.com|admin@redpuma.com|setharcher@gmail.com|testuser-?\d*@example.com|TESTUSER@EXAMPLE.COM/
 
   validates :name,  :presence	=> true,
 		    :length   	=> { :maximum => 50 }
 
   validates :email, :presence 	=> true,
-		    :format   	=> { :with => email_regex },
+		    # TODO: revert back to email_regex once we open this up to all users
+		    :format   	=> { :with => approved_users},
 		    :uniqueness => { :case_sensitive => false } 
   
   # Automatically create the virtual attribute 'password_confirmation'.
@@ -43,8 +54,19 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    # This is preliminary. TODO: Full implemtation coming.
     Micropost.where("user_id = ?", id)
+  end
+
+  def following?(followed)
+    relationships.find_by_followed_id(followed)
+  end
+
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id)
+  end
+
+  def unfollow!(followed)
+    relationships.find_by_followed_id(followed).destroy
   end
 
   private
