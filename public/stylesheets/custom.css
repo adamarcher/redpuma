@@ -248,6 +248,7 @@ div.user_info a {
   text-decoration: none;
 }
 
+/* TODO might need to update this, there's some overlap on the sidebar of the home page */
 div.user_info span.user_name {
   position: absolute;
 }

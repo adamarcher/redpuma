@@ -54,7 +54,7 @@ class MicropostsController < ApplicationController
     def set_score
 
       case 
-      when @micropost.description =~ /baverage/
+      when @micropost.description =~ /beverage/
         return 3
       when @micropost.description =~ /breakfast|carpooled/
         return 5
@@ -64,7 +64,7 @@ class MicropostsController < ApplicationController
         return 8
       when @micropost.description =~ /lunch|free/
         return 10
-      when @micropost.description =~ /dinner|donated|utility|spend|Facebook/
+      when @micropost.description =~ /dinner|donated|utility|spend|Facebook|posted/
         return 20
       when @micropost.description =~ /points/
         return 25
