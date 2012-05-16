@@ -105,7 +105,7 @@ class MicropostsController < ApplicationController
 
       # display the users in sorted order
       n = 1
-      @users.sort! { |x, y| x["total_score"] <=> y["total_score"] }
+      @users.sort! { |x, y| y["total_score"] <=> x["total_score"] }
       @users.each do |user|
         scoreboard << "#{n}. #{user.name}: #{user.total_score} points"
 	n = n + 1
