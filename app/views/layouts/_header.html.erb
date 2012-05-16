@@ -5,7 +5,7 @@
     <%= link_to "Home", root_path %> &nbsp;&nbsp;&nbsp;
     <% if signed_in? %>
       <%= link_to "Users", users_path %> &nbsp;&nbsp;&nbsp;
-      <%= link_to "Profile", current_user %> &nbsp;&nbsp;&nbsp;
+      <%#= link_to "Profile", current_user %>
       <%= link_to "Settings", edit_user_path(current_user) %> &nbsp;&nbsp;&nbsp;
     <% end %>
 

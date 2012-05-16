@@ -203,7 +203,9 @@ describe UsersController do
 
       it "should redirect the user to the user show page" do
         post :create, :user => @attr
-        response.should redirect_to(user_path(assigns(:user)))
+        # Updated per JL request to redirect just signed-up user to home page
+        # response.should redirect_to(user_path(assigns(:user)))
+        response.should redirect_to(root_path)
       end
 
       it "should sign the user in" do

@@ -5,6 +5,7 @@ Factory.define :user do |user|
   user.email			"testuser@redpuma.com"
   user.password			"testuser"
   user.password_confirmation	"testuser"
+  user.total_score		43
 end
 
 Factory.sequence :email do |n|

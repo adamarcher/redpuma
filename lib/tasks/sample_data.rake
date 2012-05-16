@@ -16,6 +16,7 @@ end
   def make_users
     admin = User.create!(:name			=> "Dev User",
 		 	 :email			=> "devuser@redpuma.com",
+		 	 :total_score		=> 8,
 		 	 :password		=> "devuser",
 		 	 :password_confirmation => "devuser")
     admin.toggle!(:admin)
@@ -25,6 +26,7 @@ end
       password = "devuser"
       User.create!(:name => name,
 		   :email => email,
+		   :total_score => rand(100),
 		   :password => password,
 		   :password_confirmation => password)
     end  # 99.times do |n|

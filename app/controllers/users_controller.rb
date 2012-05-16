@@ -26,8 +26,9 @@ class UsersController < ApplicationController
       sign_in @user
 
       # Handle a successful user DB save
-      flash[:success] = "Welcome to RedPuma!"
-      redirect_to @user
+      flash[:success] = "Welcome to RedPuma! Next up, click on 'Users' above and follow your friends!"
+      redirect_to(root_path)
+      # redirect_to @user
     else
       # Not a successful user DB save!
 
