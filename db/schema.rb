@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120509231848) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
-    t.integer  "total_score"
+    t.integer  "total_score",        :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
