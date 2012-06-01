@@ -79,7 +79,7 @@ class MicropostsController < ApplicationController
       # TODO make this an actual real amount
       # current_amt_saved = "Total Money Saved so far due to game: $2,345"
       current_amt_saved = ""
-      scrbrd = "SCOREBOARD:"
+      scrbrd = "SCOREBOARD FOR LAST 7 DAYS:"
       dot = "."
       line = "---------------------------------------------"
 
@@ -98,7 +98,9 @@ class MicropostsController < ApplicationController
       # in the scoreboard
       total_score = 0
       @micropost.user.microposts.each do |post|
-	total_score = total_score + post.score
+	if post.created_at >= 1.week.ago
+	  total_score = total_score + post.score
+	end
       end
       @micropost.user.total_score = total_score
       @users << @micropost.user.dup
