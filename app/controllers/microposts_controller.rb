@@ -89,8 +89,10 @@ class MicropostsController < ApplicationController
       @users.each do |user|
         total_score = 0
 	user.microposts.each do |post|
-	  total_score = total_score + post.score
-          user.total_score = total_score
+	  if post.created_at >= 1.week.ago
+	    total_score = total_score + post.score
+            user.total_score = total_score
+	  end
         end
       end
 
