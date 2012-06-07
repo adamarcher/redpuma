@@ -88,6 +88,7 @@ class MicropostsController < ApplicationController
       # sort all followING users by last_7_days_score column in users table
       @users.each do |user|
         total_score = 0
+        user.total_score = 0 # Fixing bug where David's score is borking the site
 	user.microposts.each do |post|
 	  if post.created_at >= 1.week.ago
 	    total_score = total_score + post.score
