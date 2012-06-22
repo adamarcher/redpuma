@@ -8,64 +8,160 @@
     <% @possible_actions =
 			   [
                             [
-			      'I didn\'t buy a beverage (3 pts)',
-			      'I didn\'t buy a beverage (3 pts)'
+			      'I bought in bulk from Costco or other discount retailer ($10)',
+			      'I bought in bulk from Costco or other discount retailer ($10)'
 			    ],
                             [
-			      'I didn\'t buy breakfast (5 pts)',
-		       	      'I didn\'t buy breakfast (5 pts)'
+			      'I "pre-gamed" at home to avoid buying expensive beverages ($25)',
+			      'I "pre-gamed" at home to avoid buying expensive beverages ($25)'
 			    ],
                             [
-			      'I didn\'t buy lunch (10 pts)',
-			      'I didn\'t buy lunch (10 pts)'
+			      'I ate my roommate\'s food (with permission) rather than let it spoil ($5)',
+			      'I ate my roommate\'s food (with permission) rather than let it spoil ($5)'
 			    ],
                             [
-			      'I didn\'t buy dinner (20 pts)',
-			      'I didn\'t buy dinner (20 pts)'
+			      'I got a book from the library instead of buying it ($10)',
+			      'I got a book from the library instead of buying it ($10)'
 			    ],
                             [
-			      'I posted something on Craigslist or eBay (20 pts)',
-			      'I posted something on Craigslist or eBay (20 pts)'
+			      'I bought an item online that was cheaper and did not pay sales tax ($20)',
+			      'I bought an item online that was cheaper and did not pay sales tax ($20)'
 			    ],
                             [
-			      'I donated an item (20 pts)',
-			      'I donated an item (20 pts)'
+			      'I bought clothes at a discount retailer or used clothing store ($50)',
+			      'I bought clothes at a discount retailer or used clothing store ($50)'
 			    ],
                             [
-			      'I called a utility (phone, cable, etc.) and asked for money back or a lower rate (20 pts)',
-			      'I called a utility (phone, cable, etc.) and asked for money back or a lower rate (20 pts)'
+			      'I called a utility (cable, mobile phone, etc.) and asked for money back or a lower rate $20)',
+			      'I called a utility (cable, mobile phone, etc.) and asked for money back or a lower rate $20)'
 			    ],
                             [
-			      'I deposited money into a Savings or Investment Account (30 pts)',
-			      'I deposited money into a Savings or Investment Account (30 pts)'
+			      'I did my own beauty action (nails, hair, facial, etc) ($30)',
+			      'I did my own beauty action (nails, hair, facial, etc) ($30)'
 			    ],
                             [
-			      'I did not spend any money (other than on groceries or transportation) (20 pts)',
-			      'I did not spend any money (other than on groceries or transportation) (20 pts)'
+			      'I drank water instead of buying a beverage ($3)',
+			      'I drank water instead of buying a beverage ($3)',
 			    ],
                             [
-			      'I used miles or points for travel instead of cash (25 pts)',
-			      'I used miles or points for travel instead of cash (25 pts)'
+			      'I used miles or points for travel instead of cash ($200)',
+			      'I used miles or points for travel instead of cash ($200)'
 			    ],
                             [
-			      'I carpooled instead of driving (5 pts)',
-			      'I carpooled instead of driving (5 pts)'
+			      'I walked instead of driving ($3)',
+			      'I walked instead of driving ($3)'
 			    ],
                             [
-			      'I walked instead of driving (8 pts)',
-			      'I walked instead of driving (8 pts)'
+			      'I took public transporation instead of driving or taking a cab ($10)',
+			      'I took public transporation instead of driving or taking a cab ($10)'
 			    ],
                             [
-			      'I took public transporation instead of driving (6 pts)',
-			      'I took public transporation instead of driving (6 pts)'
+			      'I made coffee at home or drank the free coffee at work ($3)',
+			      'I made coffee at home or drank the free coffee at work ($3)'
 			    ],
                             [
-			      'I got free stuff today that I\'m going to use (10 pts)',
-			      'I got free stuff today that I\'m going to use (10 pts)'
+			      'I made brunch at home rather than going out ($25)',
+			      'I made brunch at home rather than going out ($25)'
 			    ],
                             [
-			      'I posted on Facebook or Twitter about my financial goals (20 pts)',
-			      'I posted on Facebook or Twitter about my financial goals (20 pts)'
+			      'I made dinner at home ($20)',
+			      'I made dinner at home ($20)'
+			    ],
+                            [
+			      'I made brunch at home rather than going out ($25)',
+			      'I made brunch at home rather than going out ($25)'
+			    ],
+                            [
+			      'I made my clothes (or asked a friend of family member to make it for me) ($30)',
+			      'I made my clothes (or asked a friend of family member to make it for me) ($30)'
+			    ],
+                            [
+			      'I purchased a generic or cheaper brand ($3)',
+			      'I purchased a generic or cheaper brand ($3)',
+			    ],
+                            [
+			      'I recycled or borrowed a dress rather than buying a new one for a special occasion ($300)',
+			      'I recycled or borrowed a dress rather than buying a new one for a special occasion ($300)'
+			    ],
+                            [
+			      'I regifted ($50)',
+			      'I regifted ($50)'
+			    ],
+                            [
+			      'I repaired clothing rather than buying new ones ($50)',
+			      'I repaired clothing rather than buying new ones ($50)'
+			    ],
+                            [
+			      'I purchased a generic or cheaper brand ($3)',
+			      'I purchased a generic or cheaper brand ($3)',
+			    ],
+                            [
+			      'I returned things I do not need ($25)',
+			      'I returned things I do not need ($25)'
+			    ],
+                            [
+			      'I shared my online account with friends or family (i.e. Netflix, Amazon Prime, cell phone family plan) ($20)',
+			      'I shared my online account with friends or family (i.e. Netflix, Amazon Prime, cell phone family plan) ($20)'
+			    ],
+                            [
+			      'I sold old items at a used item store or online ($25)',
+			      'I sold old items at a used item store or online ($25)'
+			    ],
+                            [
+			      'I stayed in a cheap hotel, hostel or camped ($100)',
+			      'I stayed in a cheap hotel, hostel or camped ($100)'
+			    ],
+                            [
+			      'I traded clothes with friends ($50)',
+			      'I traded clothes with friends ($50)'
+			    ],
+                            [
+			      'I use an internet service for international calls and texts (i.e. Skype, Whatsapp) ($20)',
+			      'I use an internet service for international calls and texts (i.e. Skype, Whatsapp) ($20)'
+			    ],
+                            [
+			      'I used a coupon ($5)',
+			      'I used a coupon ($5)'
+			    ],
+                            [
+			      'I used a Groupon (or similar) for something I would normally pay full price for ($25)',
+			      'I used a Groupon (or similar) for something I would normally pay full price for ($25)'
+			    ],
+                            [
+			      'I went to a discount grocery store instead of a more expensive one (i.e. Trader Joe\'s instead of Whole Foods) ($50)',
+			      'I went to a discount grocery store instead of a more expensive one (i.e. Trader Joe\'s instead of Whole Foods) ($50)'
+			    ],
+                            [
+			      'I went to a matinnee ($2)',
+			      'I went to a matinnee ($2)'
+			    ],
+                            [
+			      'I washed and pressed clothes at home instead of taking them to the dry cleaners ($10)',
+			      'I washed and pressed clothes at home instead of taking them to the dry cleaners ($10)'
+			    ],
+                            [
+			      'I donated an item for a tax deduction ($20)',
+			      'I donated an item for a tax deduction ($20)'
+			    ],
+                            [
+			      'I paid off debt ($50)',
+			      'I paid off debt ($50)'
+			    ],
+                            [
+			      'I put money into a savings or investment account ($30)',
+			      'I put money into a savings or investment account ($30)'
+			    ],
+                            [
+			      'I contributed to a retirement account ($50)',
+			      'I contributed to a retirement account ($50)'
+			    ],
+                            [
+			      'I posted on Facebook or Twitter about my financial goals ($10)',
+			      'I posted on Facebook or Twitter about my financial goals ($10)'
+			    ],
+                            [
+			      'I lived with a roommate rather than on my own ($500)',
+			      'I lived with a roommate rather than on my own ($500)'
 			    ],
                            ]
     %>

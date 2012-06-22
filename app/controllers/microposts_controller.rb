@@ -76,14 +76,9 @@ class MicropostsController < ApplicationController
       @users = @micropost.user.following.dup
 
       blank = ""
-      # TODO make this an actual real amount
-      # current_amt_saved = "Total Money Saved so far due to game: $2,345"
-      current_amt_saved = ""
       scrbrd = "SCOREBOARD FOR LAST 7 DAYS:"
       dot = "."
       line = "---------------------------------------------"
-
-      scoreboard << blank << scrbrd << dot << dot << dot
 
       # sort all followING users by last_7_days_score column in users table
       @users.each do |user|
@@ -100,23 +95,47 @@ class MicropostsController < ApplicationController
       # Add the current user to the array of all users to be printed
       # in the scoreboard
       total_score = 0
+      three_day_score = 0
+      twenty_four_hour_score = 0
       @micropost.user.microposts.each do |post|
 	if post.created_at >= 1.week.ago
 	  total_score = total_score + post.score
+	end
+	if post.created_at >= 3.day.ago
+	  three_day_score = three_day_score + post.score
+	end
+	if post.created_at >= 24.hour.ago
+	  twenty_four_hour_score = twenty_four_hour_score + post.score
 	end
       end
       @micropost.user.total_score = total_score
       @users << @micropost.user.dup
 
+      # In the future, just change 100000 to the LNW they give me at sign-up
+      total_current_net_worth = 100000 + @micropost.user.total_score 
+      total_current_net_worth_commas = number_with_delimiter(total_current_net_worth)
+
+      projected_net_worth_at_retirement = (1.08**30)*total_current_net_worth
+      projected_net_worth_at_retirement_commas = number_with_delimiter(projected_net_worth_at_retirement.to_i)
+
+      retire_net_worth_diff = (1.08**30)*@micropost.score
+
+      scoreboard << blank << line << blank
+      scoreboard << "Projected Net Worth at Retirement: $#{projected_net_worth_at_retirement_commas} (+ $#{retire_net_worth_diff.to_i})"
+      scoreboard << "Total Current Net Worth: $#{total_current_net_worth_commas}"
+      scoreboard << blank << line << blank
+      scoreboard << "Total Savings in last 24 hours: $#{twenty_four_hour_score}"
+      scoreboard << "Total Savings in last 3 days: $#{three_day_score}"
+      scoreboard << blank << line << blank
+      scoreboard << scrbrd << dot << dot << dot
+
       # display the users in sorted order
       n = 1
       @users.sort! { |x, y| y["total_score"] <=> x["total_score"] }
       @users.each do |user|
-        scoreboard << "#{n}. #{user.name}: #{user.total_score} points"
+        scoreboard << "#{n}. #{user.name}: $#{user.total_score}"
 	n = n + 1
       end
-
-      scoreboard << dot << dot << blank << line << blank << current_amt_saved
 
       return scoreboard
 
@@ -148,28 +167,46 @@ class MicropostsController < ApplicationController
     def set_score
 
       case 
-      when @micropost.description =~ /beverage/
+      when @micropost.description =~ /matinnee/
+        return 2
+      when @micropost.description =~ /water|carpooled|coffee|generic|walked/
         return 3
-      when @micropost.description =~ /breakfast|carpooled/
+      when @micropost.description =~ /permission|coupon/
         return 5
-      when @micropost.description =~ /public/
-        return 6
-      when @micropost.description =~ /walked/
-        return 8
-      when @micropost.description =~ /lunch|free/
+      when @micropost.description =~ /costco|library|lunch|public|clothes|facebook/
         return 10
-      when @micropost.description =~ /dinner|donated|utility|spend|Facebook|posted/
+      when @micropost.description =~ /item online|utility|dinner|netflix|whatsapp|deduction/
         return 20
-      when @micropost.description =~ /points/
+      when @micropost.description =~ /gamed|brunch|returned|sold|groupon/
         return 25
-      when @micropost.description =~ /deposited/
+      when @micropost.description =~ /beauty|made my clothes|investment/
         return 30
+      when @micropost.description =~ /discount retailer|used clothing store|regifted|repaired|traded|discount grocery|debt|retirement/
+        return 50
+      when @micropost.description =~ /hostel/
+        return 100
+      when @micropost.description =~ /points/
+        return 200
+      when @micropost.description =~ /recycled/
+        return 300
+      when @micropost.description =~ /lived with a roommate/
+        return 500
       else
         flash[:error] = "Your points were given. However, please email \
 			admin@redpuma.com and let them know that you \ 
 			recieved error 101 when saving your action. Thank \
 			you!"
         return 20
+      end
+    end
+
+    def number_with_delimiter(number, delimiter=",", separator=".")
+      begin
+        parts = number.to_s.split('.')
+	parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
+	parts.join separator
+      rescue
+        number
       end
     end
 
