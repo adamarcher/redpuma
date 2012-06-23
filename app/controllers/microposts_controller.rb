@@ -179,9 +179,9 @@ class MicropostsController < ApplicationController
         return 20
       when @micropost.description =~ /gamed|brunch|returned|sold|groupon/
         return 25
-      when @micropost.description =~ /beauty|made my clothes|investment/
+      when @micropost.description =~ /beauty|made.my.clothes|investment/
         return 30
-      when @micropost.description =~ /discount retailer|used clothing store|regifted|repaired|traded|discount grocery|debt|retirement/
+      when @micropost.description =~ /used.clothing.store|regifted|repaired|traded.clothes|discount.grocery|paid.off.debt|retirement/
         return 50
       when @micropost.description =~ /hostel/
         return 100
@@ -189,7 +189,7 @@ class MicropostsController < ApplicationController
         return 200
       when @micropost.description =~ /recycled/
         return 300
-      when @micropost.description =~ /lived with a roommate/
+      when @micropost.description =~ /lived.with.a.roommate/
         return 500
       else
         flash[:error] = "Your points were given. However, please email \
