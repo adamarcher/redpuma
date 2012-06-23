@@ -175,7 +175,7 @@ class MicropostsController < ApplicationController
         return 5
       when @micropost.description =~ /costco|library|lunch|public|clothes|facebook/
         return 10
-      when @micropost.description =~ /item online|utility|dinner|netflix|whatsapp|deduction/
+      when @micropost.description =~ /item.online|utility|dinner|Netflix|whatsapp|deduction/
         return 20
       when @micropost.description =~ /gamed|brunch|returned|sold|groupon/
         return 25
