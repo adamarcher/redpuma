@@ -97,7 +97,11 @@ class MicropostsController < ApplicationController
       total_score = 0
       three_day_score = 0
       twenty_four_hour_score = 0
+      complete_score = 0
       @micropost.user.microposts.each do |post|
+
+	complete_score = complete_score + post.score
+
 	if post.created_at >= 1.week.ago
 	  total_score = total_score + post.score
 	end
@@ -113,6 +117,7 @@ class MicropostsController < ApplicationController
 
       # In the future, just change 100000 to the LNW they give me at sign-up
       total_current_net_worth = 100000 + @micropost.user.total_score 
+      total_current_net_worth = 100000 + complete_score 
       total_current_net_worth_commas = number_with_delimiter(total_current_net_worth)
 
       projected_net_worth_at_retirement = (1.08**30)*total_current_net_worth
