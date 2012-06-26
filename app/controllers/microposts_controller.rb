@@ -268,6 +268,8 @@ class MicropostsController < ApplicationController
         return 25
       when @micropost.description =~ /SHOP.+regifted/
         return 50
+      when @micropost.description =~ /SHOP.+salesperson/
+        return 50
 
       # TRAVEL
 
