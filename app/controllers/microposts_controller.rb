@@ -167,30 +167,123 @@ class MicropostsController < ApplicationController
     def set_score
 
       case 
-      when @micropost.description =~ /matinnee/
-        return 2
-      when @micropost.description =~ /water|carpooled|coffee|generic|walked/
-        return 3
-      when @micropost.description =~ /permission|coupon/
-        return 5
-      when @micropost.description =~ /costco|library|lunch|public|clothes|facebook/
-        return 10
-      when @micropost.description =~ /item.online|utility|dinner|Netflix|whatsapp|deduction/
-        return 20
-      when @micropost.description =~ /gamed|brunch|returned|sold|groupon/
-        return 25
-      when @micropost.description =~ /beauty|made.my.clothes|investment/
-        return 30
-      when @micropost.description =~ /used.clothing.store|regifted|repaired|traded.clothes|discount.grocery|paid.off.debt|retirement/
-        return 50
-      when @micropost.description =~ /hostel/
-        return 100
-      when @micropost.description =~ /points/
-        return 200
-      when @micropost.description =~ /recycled/
+
+      # CLOTHES
+
+      when @micropost.description =~ /CLOTHES.+washed/
+        return 10 
+      when @micropost.description =~ /CLOTHES.+made/
+        return 30 
+      when @micropost.description =~ /CLOTHES.+discount.retailer/
+        return 50 
+      when @micropost.description =~ /CLOTHES.+used/
+        return 50 
+      when @micropost.description =~ /CLOTHES.+repaired/
+        return 50 
+      when @micropost.description =~ /CLOTHES.+traded/
+        return 50 
+      when @micropost.description =~ /CLOTHES.+borrowed/
         return 300
-      when @micropost.description =~ /lived.with.a.roommate/
+
+      # DRINK
+
+      when @micropost.description =~ /DRINK.+water/
+        return 3
+      when @micropost.description =~ /DRINK.+coffee/
+        return 3
+      when @micropost.description =~ /DRINK.+game/
+        return 25
+
+      # FINANCE
+
+      when @micropost.description =~ /FINANCE.+donated/
+        return 20
+      when @micropost.description =~ /FINANCE.+savings/
+        return 30
+      when @micropost.description =~ /FINANCE.+debt/
+        return 50
+      when @micropost.description =~ /FINANCE.+retirement/
+        return 50
+
+      # FOOD
+
+      when @micropost.description =~ /FOOD.+permission/
+        return 5
+      when @micropost.description =~ /FOOD.+breakfast/
+        return 5
+      when @micropost.description =~ /FOOD.+lunch/
+        return 10
+      when @micropost.description =~ /FOOD.+dinner/
+        return 20
+      when @micropost.description =~ /FOOD.+brunch/
+        return 25
+      when @micropost.description =~ /FOOD.+parents/
+        return 25
+      when @micropost.description =~ /FOOD.+discount.grocery/
+        return 50
+
+      # HOME
+
+      when @micropost.description =~ /HOME.+internet/
+        return 20
+      when @micropost.description =~ /HOME.+Netflix/
+        return 20
+      when @micropost.description =~ /HOME.+utility/
+        return 20
+      when @micropost.description =~ /HOME.+roommate/
         return 500
+      when @micropost.description =~ /HOME.+family/
+        return 700
+      when @micropost.description =~ /HOME.+family.+FREE/
+        return 1000
+
+      # OTHER
+
+      when @micropost.description =~ /OTHER.+matinnee/
+        return 2
+      when @micropost.description =~ /OTHER.+Facebook/
+        return 10
+      when @micropost.description =~ /OTHER.+beauty/
+        return 30
+      when @micropost.description =~ /OTHER.+baby/
+        return 80
+
+      # SHOP
+
+      when @micropost.description =~ /SHOP.+generic/
+        return 3
+      when @micropost.description =~ /SHOP.+coupon/
+        return 5
+      when @micropost.description =~ /SHOP.+Costco/
+        return 10
+      when @micropost.description =~ /SHOP.+library/
+        return 10
+      when @micropost.description =~ /SHOP.+online/
+        return 20
+      when @micropost.description =~ /SHOP.+returned/
+        return 25
+      when @micropost.description =~ /SHOP.+sold/
+        return 25
+      when @micropost.description =~ /SHOP.+Groupon/
+        return 25
+      when @micropost.description =~ /SHOP.+regifted/
+        return 50
+
+      # TRAVEL
+
+      when @micropost.description =~ /TRAVEL.+carpooled/
+        return 3
+      when @micropost.description =~ /TRAVEL.+walked/
+        return 3
+      when @micropost.description =~ /TRAVEL.+public/
+        return 10
+      when @micropost.description =~ /TRAVEL.+ZipCar/
+        return 20
+      when @micropost.description =~ /TRAVEL.+hotel/
+        return 100
+      when @micropost.description =~ /TRAVEL.+miles/
+        return 200
+
       else
         flash[:error] = "Your points were given. However, please email \
 			admin@redpuma.com and let them know that you \ 
