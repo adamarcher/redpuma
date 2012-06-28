@@ -237,10 +237,10 @@ class MicropostsController < ApplicationController
         return 20
       when @micropost.description =~ /HOME.+roommate/
         return 500
-      when @micropost.description =~ /HOME.+family/
-        return 700
       when @micropost.description =~ /HOME.+family.+FREE/
         return 1000
+      when @micropost.description =~ /HOME.+family/
+        return 700
 
       # OTHER
 
