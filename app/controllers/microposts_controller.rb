@@ -181,7 +181,7 @@ class MicropostsController < ApplicationController
         return 30 
       when @micropost.description =~ /CLOTHES.+discount.retailer/
         return 50 
-      when @micropost.description =~ /CLOTHES.+used/
+      when @micropost.description =~ /CLOTHES.+used.+clothing.+store/
         return 50 
       when @micropost.description =~ /CLOTHES.+repaired/
         return 50 
