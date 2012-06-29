@@ -284,8 +284,12 @@ class MicropostsController < ApplicationController
         return 3
       when @micropost.description =~ /TRAVEL.+public/
         return 10
+      when @micropost.description =~ /TRAVEL.+parking/
+        return 10
       when @micropost.description =~ /TRAVEL.+ZipCar/
         return 20
+      when @micropost.description =~ /TRAVEL.+airport/
+        return 30
       when @micropost.description =~ /TRAVEL.+hotel/
         return 100
       when @micropost.description =~ /TRAVEL.+miles/
