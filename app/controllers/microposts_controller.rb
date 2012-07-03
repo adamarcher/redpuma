@@ -196,6 +196,8 @@ class MicropostsController < ApplicationController
         return 3
       when @micropost.description =~ /DRINK.+coffee/
         return 3
+      when @micropost.description =~ /DRINK.+got.+free.+drinks/
+        return 20
       when @micropost.description =~ /DRINK.+game/
         return 25
 
