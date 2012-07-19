@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 				   :source => :follower
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  approved_users = /lillianbarcher@gmail.com|jesselevey@gmail.com|willis.tyler@gmail.com|travis@peoplebrowsr.com|marayakarena@gmail.com|joanna.gurin@gmail.com|krsgoss@gmail.com|mark.williamson@gmail.com|hello@ryanfosterdesign.com|docfranky@gmail.com|jamiemcd09@gmail.com|bbchamberlain@gmail.com|ashleybaharestani@gmail.com|amit.kapoor.wg08@gmail.com|rachel.berger11@gmail.com|davebergler@gmail.com|aliciablevey@gmail.com|townsend.joseph@gmail.com|devuser-?\d*@redpuma.com|testuser-?\d*@redpuma.com|me@adamarcher.com|admin@redpuma.com|setharcher@gmail.com|testuser-?\d*@example.com|TESTUSER@EXAMPLE.COM/
+  approved_users = /lillianbarcher@gmail.com|jesselevey@gmail.com|willis.tyler@gmail.com|ajbellis@gmail.com|benrgurin@gmail.com|travis@peoplebrowsr.com|marayakarena@gmail.com|joanna.gurin@gmail.com|krsgoss@gmail.com|mark.williamson@gmail.com|hello@ryanfosterdesign.com|docfranky@gmail.com|jamiemcd09@gmail.com|bbchamberlain@gmail.com|ashleybaharestani@gmail.com|amit.kapoor.wg08@gmail.com|rachel.berger11@gmail.com|davebergler@gmail.com|aliciablevey@gmail.com|townsend.joseph@gmail.com|devuser-?\d*@redpuma.com|testuser-?\d*@redpuma.com|me@adamarcher.com|admin@redpuma.com|setharcher@gmail.com|testuser-?\d*@example.com|TESTUSER@EXAMPLE.COM/
 
   validates :name,  :presence	=> true,
 		    :length   	=> { :maximum => 50 }
