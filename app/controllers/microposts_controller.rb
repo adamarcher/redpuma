@@ -177,6 +177,8 @@ class MicropostsController < ApplicationController
 
       when @micropost.description =~ /CLOTHES.+washed/
         return 10 
+      when @micropost.description =~ /CLOTHES.+unsubscribed.+from.+an.+online.+retailer/
+        return 20 
       when @micropost.description =~ /CLOTHES.+made/
         return 30 
       when @micropost.description =~ /CLOTHES.+discount.retailer/
@@ -187,6 +189,8 @@ class MicropostsController < ApplicationController
         return 50 
       when @micropost.description =~ /CLOTHES.+traded/
         return 50 
+      when @micropost.description =~ /CLOTHES.+decided.+not.+to.+buy.+something/
+        return 100
       when @micropost.description =~ /CLOTHES.+borrowed/
         return 300
 
@@ -200,6 +204,8 @@ class MicropostsController < ApplicationController
         return 20
       when @micropost.description =~ /DRINK.+game/
         return 25
+      when @micropost.description =~ /DRINK.+BYOB.+restaurant/
+        return 40
 
       # FINANCE
 
@@ -237,6 +243,8 @@ class MicropostsController < ApplicationController
         return 20
       when @micropost.description =~ /HOME.+utility/
         return 20
+      when @micropost.description =~ /HOME.+non.+fancy.+schmancy/
+        return 450
       when @micropost.description =~ /HOME.+roommate/
         return 500
       when @micropost.description =~ /HOME.+family.+FREE/
