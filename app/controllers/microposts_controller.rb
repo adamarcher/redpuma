@@ -304,6 +304,8 @@ class MicropostsController < ApplicationController
         return 100
       when @micropost.description =~ /TRAVEL.+miles/
         return 200
+      when @micropost.description =~ /TRAVEL.+staycation/
+        return 500
 
       else
         flash[:error] = "Your points were given. However, please email \
